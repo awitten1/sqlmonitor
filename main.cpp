@@ -28,6 +28,7 @@ int main(int argc, char** argv) {
 
     DDL(conn);
 
-    forEachProcess();
+    forEachProcess([](PidInfo) {
+    });
     return 0;
 }
