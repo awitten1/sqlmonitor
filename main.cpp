@@ -1,9 +1,10 @@
 
 #include "duckdb.hpp"
 #include <iostream>
-
+#include "ddl.hpp"
 #include <gflags/gflags.h>
 #include <fmt/core.h>
+#include "procfs.hpp"
 
 DEFINE_string(data_dir, "data_files/",
                 "directory to store files");
@@ -24,5 +25,9 @@ int main(int argc, char** argv) {
             (DATA_PATH '{}');
         USE metrics;
         )", FLAGS_data_dir));
+
+    DDL(conn);
+
+    forEachProcess();
     return 0;
 }
